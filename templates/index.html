@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Smart Planner</title>
+
+<link rel="stylesheet"
+href="{{url_for('static',
+filename='style.css')}}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Smart Planner</h1>
+
+<form action="/add" method="POST">
+
+<input name="task"
+placeholder="Task"
+required>
+
+<input type="date"
+name="date"
+required>
+
+<input type="time"
+name="time"
+required>
+
+<select name="priority">
+
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+
+</select>
+
+<button>Add</button>
+
+</form>
+
+{% for t in tasks %}
+
+<div class="card">
+
+<h3>{{t[1]}}</h3>
+
+<p>{{t[2]}}</p>
+
+<p>{{t[3]}}</p>
+
+<p>{{t[4]}}</p>
+
+<a href="/complete/{{t[0]}}">
+Complete
+</a>
+
+<a href="/delete/{{t[0]}}">
+Delete
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>
